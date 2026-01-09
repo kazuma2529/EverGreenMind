@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\development\\\\EverGreenMind\\\\src\" /s /b)",
+      "Bash(findstr:*)",
+      "Bash(npm install:*)",
+      "Bash(npx instant-cli push:*)"
+    ]
+  }
+}

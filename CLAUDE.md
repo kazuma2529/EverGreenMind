@@ -228,12 +228,12 @@ clientDb.transact(clientDb.tx.todos[id()].create({ title: 'New Todo' }));
 Always use Instant utility types to type data models
 
 ```tsx
-import { AppSchema } from '@/instant.schema';
+import { AppSchema } from "@/instant.schema";
 
-type Todo = InstaQLEntity<AppSchema, 'todos'>; // todo from clientDb.useQuery({ todos: {} })
+type Todo = InstaQLEntity<AppSchema, "todos">; // todo from clientDb.useQuery({ todos: {} })
 type PostsWithProfile = InstaQLEntity<
   AppSchema,
-  'posts',
+  "posts",
   { author: { avatar: {} } }
 >; // post from clientDb.useQuery({ posts: { author: { avatar: {} } } })
 ```

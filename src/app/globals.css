@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Forest Background */
+  --forest-bg-dark: #0a1810;
+  --forest-bg-mid: #142820;
+  --forest-bg-light: #1e3a2f;
+
+  /* Vibrant Greens */
+  --forest-green-100: #2dd4bf;
+  --forest-green-200: #34d399;
+  --forest-green-300: #10b981;
+  --forest-green-400: #059669;
+
+  /* Tab 1: 挑戦 - 双葉 (Fresh Sprout) - エネルギッシュなライムグリーン */
+  --tab1-primary: #84cc16;
+  --tab1-secondary: #bef264;
+  --tab1-glow: rgba(132, 204, 22, 0.4);
+  --tab1-glass: rgba(190, 242, 100, 0.1);
+
+  /* Tab 2: 意識 - 北極星 (North Star) - 神秘的な紫と金 */
+  --tab2-primary: #a78bfa;
+  --tab2-secondary: #fbbf24;
+  --tab2-glow: rgba(167, 139, 250, 0.4);
+  --tab2-glass: rgba(167, 139, 250, 0.1);
+
+  /* Tab 3: 価値観 - 大樹 (Great Tree) - 落ち着いたアンバーと深緑 */
+  --tab3-primary: #f59e0b;
+  --tab3-secondary: #34d399;
+  --tab3-glow: rgba(245, 158, 11, 0.4);
+  --tab3-glass: rgba(245, 158, 11, 0.1);
+
+  /* Tab 4: 道標 - 山嶺 (Mountain Peak) - 力強いインディゴと青 */
+  --tab4-primary: #6366f1;
+  --tab4-secondary: #38bdf8;
+  --tab4-glow: rgba(99, 102, 241, 0.4);
+  --tab4-glass: rgba(99, 102, 241, 0.1);
+
+  /* Glass Morphism */
+  --glass-bg: rgba(20, 40, 32, 0.6);
+  --glass-border: rgba(45, 212, 191, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Text */
+  --text-primary: #f0fdf4;
+  --text-secondary: #a7f3d0;
+  --text-muted: #6ee7b7;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: linear-gradient(
+    135deg,
+    var(--forest-bg-dark) 0%,
+    var(--forest-bg-mid) 50%,
+    var(--forest-bg-light) 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
