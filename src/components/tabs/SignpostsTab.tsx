@@ -19,7 +19,6 @@ import { Loading } from '@/components/ui/Loading';
 import { Error } from '@/components/ui/Error';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { useFilter } from '@/lib/hooks/useFilter';
-import { useCurrentUser } from '@/lib/hooks/useCurrentUser';
 import type { FilterOption, ActionItem } from '@/lib/types';
 import { MESSAGES, TAB_CONFIG } from '@/lib/constants';
 
@@ -35,7 +34,6 @@ export function SignpostsTab() {
   });
 
   const sensors = useDragAndDropSensors();
-  const userId = useCurrentUser();
 
   // データを取得（早期リターンの前で定義）
   const allActionItems = (data?.actionItems || []) as ActionItem[];
@@ -51,7 +49,6 @@ export function SignpostsTab() {
 
   // 3年後の目標の更新
   const handleUpdateThreeYearGoals = (content: string) => {
-    if (!userId) return;
     if (threeYearGoals) {
       db.transact(
         db.tx.threeYearGoals[threeYearGoals.id].update({
@@ -63,7 +60,6 @@ export function SignpostsTab() {
       db.transact(
         db.tx.threeYearGoals[id()].update({
           content,
-          userId,
           updatedAt: Date.now(),
         })
       );
@@ -72,7 +68,6 @@ export function SignpostsTab() {
 
   // 今月の目標の更新
   const handleUpdateMonthlyGoals = (content: string) => {
-    if (!userId) return;
     if (monthlyGoals) {
       db.transact(
         db.tx.monthlyGoals[monthlyGoals.id].update({
@@ -84,7 +79,6 @@ export function SignpostsTab() {
       db.transact(
         db.tx.monthlyGoals[id()].update({
           content,
-          userId,
           updatedAt: Date.now(),
         })
       );
@@ -93,7 +87,6 @@ export function SignpostsTab() {
 
   // やるべきことの操作
   const handleAddActionItem = (title: string) => {
-    if (!userId) return;
     const now = Date.now();
     const newOrder = allActionItems.length;
 
@@ -102,7 +95,6 @@ export function SignpostsTab() {
         title,
         completed: false,
         order: newOrder,
-        userId,
         createdAt: now,
         updatedAt: now,
       })

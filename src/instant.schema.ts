@@ -20,7 +20,6 @@ const _schema = i.schema({
       category: i.string().indexed(), // "yearly" | "lifetime"
       completed: i.boolean(),
       order: i.number().indexed(),
-      userId: i.string().indexed(),
       createdAt: i.number().indexed(),
       updatedAt: i.number(),
     }),
@@ -28,34 +27,29 @@ const _schema = i.schema({
     consciousness: i.entity({
       title: i.string(),
       order: i.number().indexed(),
-      userId: i.string().indexed(),
       createdAt: i.number().indexed(),
       updatedAt: i.number(),
     }),
     // Tab 3: 価値観と自分軸 - 幸せの定義 (Happiness Definition)
     happinessDefinition: i.entity({
       content: i.string(),
-      userId: i.string().indexed(),
       updatedAt: i.number(),
     }),
     // Tab 3: 価値観と自分軸 - なりたい人物像 (Role Models)
     roleModels: i.entity({
       title: i.string(),
       order: i.number().indexed(),
-      userId: i.string().indexed(),
       createdAt: i.number().indexed(),
       updatedAt: i.number(),
     }),
     // Tab 4: 未来への道標 - 3年後の目標 (Three Year Goals)
     threeYearGoals: i.entity({
       content: i.string(),
-      userId: i.string().indexed(),
       updatedAt: i.number(),
     }),
     // Tab 4: 未来への道標 - 今月の目標 (Monthly Goals)
     monthlyGoals: i.entity({
       content: i.string(),
-      userId: i.string().indexed(),
       updatedAt: i.number(),
     }),
     // Tab 4: 未来への道標 - やるべきこと (Action Items)
@@ -63,7 +57,6 @@ const _schema = i.schema({
       title: i.string(),
       completed: i.boolean(),
       order: i.number().indexed(),
-      userId: i.string().indexed(),
       createdAt: i.number().indexed(),
       updatedAt: i.number(),
     }),

@@ -3,75 +3,68 @@
 import type { InstantRules } from "@instantdb/react";
 
 const rules = {
-  // チャレンジ: ユーザーごとにデータを分離
+  // チャレンジ: 全員がアクセス可能
   challenges: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
-  // 意識: ユーザーごとにデータを分離
+  // 意識: 全員がアクセス可能
   consciousness: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
-  // 幸せの定義: ユーザーごとにデータを分離
+  // 幸せの定義: 全員がアクセス可能
   happinessDefinition: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
-  // ロールモデル: ユーザーごとにデータを分離
+  // ロールモデル: 全員がアクセス可能
   roleModels: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
-  // 3年後の目標: ユーザーごとにデータを分離
+  // 3年後の目標: 全員がアクセス可能
   threeYearGoals: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
-  // 今月の目標: ユーザーごとにデータを分離
+  // 今月の目標: 全員がアクセス可能
   monthlyGoals: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
-  // アクションアイテム: ユーザーごとにデータを分離
+  // アクションアイテム: 全員がアクセス可能
   actionItems: {
     allow: {
-      view: "isOwner",
-      create: "isOwner",
-      update: "isOwner",
-      delete: "isOwner",
+      view: "true",
+      create: "true",
+      update: "true",
+      delete: "true",
     },
-    bind: ["isOwner", "auth.id != null && auth.id == data.userId"],
   },
 } satisfies InstantRules;
 

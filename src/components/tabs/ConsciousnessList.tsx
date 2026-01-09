@@ -15,7 +15,6 @@ import { AddButton } from '@/components/ui/AddButton';
 import { Loading } from '@/components/ui/Loading';
 import { Error } from '@/components/ui/Error';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { useCurrentUser } from '@/lib/hooks/useCurrentUser';
 import { MESSAGES, TAB_CONFIG } from '@/lib/constants';
 
 export function ConsciousnessList() {
@@ -26,7 +25,6 @@ export function ConsciousnessList() {
   });
 
   const sensors = useDragAndDropSensors();
-  const userId = useCurrentUser();
 
   if (isLoading) return <Loading />;
   if (error) return <Error message={error.message} />;
@@ -34,7 +32,6 @@ export function ConsciousnessList() {
   const consciousnessItems = data?.consciousness || [];
 
   const handleAdd = (title: string) => {
-    if (!userId) return;
     const now = Date.now();
     const newOrder = consciousnessItems.length;
 
@@ -42,7 +39,6 @@ export function ConsciousnessList() {
       db.tx.consciousness[id()].update({
         title,
         order: newOrder,
-        userId,
         createdAt: now,
         updatedAt: now,
       })

@@ -16,7 +16,6 @@ import { AddButton } from '@/components/ui/AddButton';
 import { Loading } from '@/components/ui/Loading';
 import { Error } from '@/components/ui/Error';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { useCurrentUser } from '@/lib/hooks/useCurrentUser';
 import { MESSAGES, TAB_CONFIG } from '@/lib/constants';
 
 export function ValuesTab() {
@@ -28,7 +27,6 @@ export function ValuesTab() {
   });
 
   const sensors = useDragAndDropSensors();
-  const userId = useCurrentUser();
 
   if (isLoading) return <Loading />;
   if (error) return <Error message={error.message} />;
@@ -38,7 +36,6 @@ export function ValuesTab() {
 
   // 幸せの定義の更新
   const handleUpdateHappiness = (content: string) => {
-    if (!userId) return;
     if (happinessDefinition) {
       db.transact(
         db.tx.happinessDefinition[happinessDefinition.id].update({
@@ -51,7 +48,6 @@ export function ValuesTab() {
       db.transact(
         db.tx.happinessDefinition[id()].update({
           content,
-          userId,
           updatedAt: Date.now(),
         })
       );
@@ -60,7 +56,6 @@ export function ValuesTab() {
 
   // なりたい人物像の操作
   const handleAddRoleModel = (title: string) => {
-    if (!userId) return;
     const now = Date.now();
     const newOrder = roleModels.length;
 
@@ -68,7 +63,6 @@ export function ValuesTab() {
       db.tx.roleModels[id()].update({
         title,
         order: newOrder,
-        userId,
         createdAt: now,
         updatedAt: now,
       })

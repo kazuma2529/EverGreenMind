@@ -4,7 +4,8 @@
       "Bash(dir \"C:\\\\development\\\\EverGreenMind\\\\src\" /s /b)",
       "Bash(findstr:*)",
       "Bash(npm install:*)",
-      "Bash(npx instant-cli push:*)"
+      "Bash(npx instant-cli push:*)",
+      "mcp__playwright__browser_navigate"
     ]
   }
 }

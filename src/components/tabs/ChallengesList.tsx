@@ -9,7 +9,7 @@ import {
   verticalListSortingStrategy,
   closestCenter,
   useDragAndDropSensors,
-  DragEndEvent,
+  type DragEndEvent,
 } from '@/lib/hooks/useDragAndDrop';
 import { arrayMove } from '@dnd-kit/sortable';
 import { ListItem } from '@/components/ui/ListItem';
@@ -20,13 +20,11 @@ import { Loading } from '@/components/ui/Loading';
 import { Error } from '@/components/ui/Error';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { useFilter } from '@/lib/hooks/useFilter';
-import { useCurrentUser } from '@/lib/hooks/useCurrentUser';
 import type { FilterOption, Challenge } from '@/lib/types';
 import { MESSAGES, TAB_CONFIG } from '@/lib/constants';
 
 export function ChallengesList() {
   const currentYear = new Date().getFullYear();
-  const userId = useCurrentUser();
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [yearlyFilter, setYearlyFilter] = useState<FilterOption>('all');
   const [lifetimeFilter, setLifetimeFilter] = useState<FilterOption>('all');
@@ -61,7 +59,6 @@ export function ChallengesList() {
 
   // 年ごとのチャレンジ追加
   const handleAddYearly = (title: string) => {
-    if (!userId) return;
     const now = Date.now();
     const newOrder = yearlyChallenges.length;
 
@@ -72,7 +69,6 @@ export function ChallengesList() {
         category: 'yearly',
         completed: false,
         order: newOrder,
-        userId,
         createdAt: now,
         updatedAt: now,
       })
@@ -81,7 +77,6 @@ export function ChallengesList() {
 
   // 生涯チャレンジ追加
   const handleAddLifetime = (title: string) => {
-    if (!userId) return;
     const now = Date.now();
     const newOrder = lifetimeChallenges.length;
 
@@ -92,7 +87,6 @@ export function ChallengesList() {
         category: 'lifetime',
         completed: false,
         order: newOrder,
-        userId,
         createdAt: now,
         updatedAt: now,
       })
