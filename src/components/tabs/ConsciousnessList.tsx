@@ -26,13 +26,12 @@ export function ConsciousnessList() {
   });
 
   const sensors = useDragAndDropSensors();
+  const userId = useCurrentUser();
 
   if (isLoading) return <Loading />;
   if (error) return <Error message={error.message} />;
 
   const consciousnessItems = data?.consciousness || [];
-
-  const userId = useCurrentUser();
 
   const handleAdd = (title: string) => {
     if (!userId) return;
