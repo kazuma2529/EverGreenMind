@@ -60,15 +60,13 @@ export function ChallengesList() {
   // 年ごとのチャレンジ追加
   const handleAddYearly = (title: string) => {
     const now = Date.now();
-    const newOrder = yearlyChallenges.length;
-
     db.transact(
-      db.tx.challenges[id()].update({
+      db.tx.challenges[id()].create({
         title,
         year: selectedYear,
         category: 'yearly',
         completed: false,
-        order: newOrder,
+        order: yearlyChallenges.length,
         createdAt: now,
         updatedAt: now,
       })
@@ -78,15 +76,13 @@ export function ChallengesList() {
   // 生涯チャレンジ追加
   const handleAddLifetime = (title: string) => {
     const now = Date.now();
-    const newOrder = lifetimeChallenges.length;
-
     db.transact(
-      db.tx.challenges[id()].update({
+      db.tx.challenges[id()].create({
         title,
         year: 0, // lifetimeは年を持たない
         category: 'lifetime',
         completed: false,
-        order: newOrder,
+        order: lifetimeChallenges.length,
         createdAt: now,
         updatedAt: now,
       })

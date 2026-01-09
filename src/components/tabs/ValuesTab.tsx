@@ -44,9 +44,8 @@ export function ValuesTab() {
         })
       );
     } else {
-      // 初回作成
       db.transact(
-        db.tx.happinessDefinition[id()].update({
+        db.tx.happinessDefinition[id()].create({
           content,
           updatedAt: Date.now(),
         })
@@ -57,12 +56,10 @@ export function ValuesTab() {
   // なりたい人物像の操作
   const handleAddRoleModel = (title: string) => {
     const now = Date.now();
-    const newOrder = roleModels.length;
-
     db.transact(
-      db.tx.roleModels[id()].update({
+      db.tx.roleModels[id()].create({
         title,
-        order: newOrder,
+        order: roleModels.length,
         createdAt: now,
         updatedAt: now,
       })

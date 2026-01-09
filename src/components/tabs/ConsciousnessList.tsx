@@ -33,12 +33,10 @@ export function ConsciousnessList() {
 
   const handleAdd = (title: string) => {
     const now = Date.now();
-    const newOrder = consciousnessItems.length;
-
     db.transact(
-      db.tx.consciousness[id()].update({
+      db.tx.consciousness[id()].create({
         title,
-        order: newOrder,
+        order: consciousnessItems.length,
         createdAt: now,
         updatedAt: now,
       })

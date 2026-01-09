@@ -58,7 +58,7 @@ export function SignpostsTab() {
       );
     } else {
       db.transact(
-        db.tx.threeYearGoals[id()].update({
+        db.tx.threeYearGoals[id()].create({
           content,
           updatedAt: Date.now(),
         })
@@ -77,7 +77,7 @@ export function SignpostsTab() {
       );
     } else {
       db.transact(
-        db.tx.monthlyGoals[id()].update({
+        db.tx.monthlyGoals[id()].create({
           content,
           updatedAt: Date.now(),
         })
@@ -88,13 +88,11 @@ export function SignpostsTab() {
   // やるべきことの操作
   const handleAddActionItem = (title: string) => {
     const now = Date.now();
-    const newOrder = allActionItems.length;
-
     db.transact(
-      db.tx.actionItems[id()].update({
+      db.tx.actionItems[id()].create({
         title,
         completed: false,
-        order: newOrder,
+        order: allActionItems.length,
         createdAt: now,
         updatedAt: now,
       })
