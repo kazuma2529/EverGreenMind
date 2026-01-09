@@ -11,8 +11,24 @@ const pwaConfig = withPWA({
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
   disable: process.env.NODE_ENV === 'development',
+  sw: 'sw.js',
+  scope: '/',
   workboxOptions: {
     disableDevLogs: true,
+    runtimeCaching: [
+      {
+        urlPattern: /^https:\/\/.*\.instantdb\.com\/.*/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'instantdb-api',
+          expiration: {
+            maxEntries: 50,
+            maxAgeSeconds: 60 * 60, // 1 hour
+          },
+          networkTimeoutSeconds: 10,
+        },
+      },
+    ],
   },
 });
 

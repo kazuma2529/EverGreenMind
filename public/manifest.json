@@ -3,6 +3,7 @@
   "short_name": "EverGreenMind",
   "description": "自己研鑽のためのセルフマネジメントアプリ",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0a1810",
   "theme_color": "#2dd4bf",
